@@ -6,7 +6,14 @@ import java.util.ArrayList;
 
 public class State {
     //Transitions 
+    public String stateName = "Q0";
     public HashMap<String, ArrayList<State>> transitions = new HashMap<String, ArrayList<State>>();
+
+    public State() {}
+
+    public State(String name) {
+        this.stateName = name;
+    }
 
     public boolean addTransition(String transitionString, State transitionState){
         if (transitions.containsKey(transitionString)) {
@@ -27,6 +34,10 @@ public class State {
         for (String transitionKey : transitionKeySet) {
             System.out.println(transitions.get(transitionKey).toString());
         }
+    }
+
+    public String toString() {
+        return stateName;
     }
 
 }

@@ -1,5 +1,6 @@
 package simulation;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,7 +16,11 @@ public class PlantSimulation
     private static float inputF = 0.0f;
     private static String inputString = "";
     private static int stringSize = 0;  
+    
     private static FSM fsm = new FSM();
+    private static State state1 = new State("Q1");
+    private static State state2 = new State("Q2");
+    private static State state3 = new State("Q3");
 
     public static void main(String[] args) {
 
@@ -24,7 +29,24 @@ public class PlantSimulation
         currentMilliSeconds = System.currentTimeMillis();
         gatherInputLoop();
 
+        fsm.addState(state1);
+        fsm.addState(state2);
+        fsm.addState(state3);
+
+        fsm.setInitialState(state1);
+        fsm.setStateAsFinalState(state3);
+
+        state1.addTransition("0", state1);
+        state1.addTransition("1", state2);
+        state2.addTransition("0", state1);
+        state2.addTransition("1", state3);
+        state3.addTransition("0", state3);
+        state3.addTransition("1", state3);
+
         System.out.println("Input String: " + (inputString));
+        System.out.println("Input String accepted: " + fsm.startMachine(inputString));
+        
+        
     }
 
     public static void inputStringSizeinputLoop() {
