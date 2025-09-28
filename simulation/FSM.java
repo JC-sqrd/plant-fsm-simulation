@@ -19,14 +19,11 @@ public class FSM {
             ArrayList<State> nextStates = new ArrayList<>();
             String input = String.valueOf(inputString.charAt(i));
             for (State state : currentStates) {
-                System.out.println("State "+ state + " transitions:");
-                state.printTransitions();
                 if (state.transitions.containsKey(input)) {
                     nextStates.addAll(state.transitions.get(input));
                 }     
             }
             currentStates = nextStates;
-            System.out.println("Iteration: " + i + " input: " + input + " Current states: " + currentStates.toString());
         }
         
         for (State state : currentStates) {
