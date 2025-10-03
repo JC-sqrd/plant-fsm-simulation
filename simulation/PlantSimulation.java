@@ -1,3 +1,8 @@
+/*
+ * @author Julio Caesar Tadena
+ */
+
+
 package simulation;
 
 import java.util.ArrayList;
@@ -5,6 +10,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import simulation.FSM;
+
 
 public class PlantSimulation
 {
@@ -80,7 +86,7 @@ public class PlantSimulation
                     if (elapsedTime > 30) {
                         inputString += 0;
                     }
-                    else if (inputF > 0.25 || inputF < 0) {
+                    else if (inputF > 2 || inputF < 0.25) {
                         inputString += 0;
                     }
                     else {
@@ -102,11 +108,11 @@ public class PlantSimulation
 
 
     public static void evaluateInput(float inputF) {
-        if (inputF > 0.25 || inputF < 0) {
-            System.out.println("0");
+        if (inputF > 2 || inputF < 0.25) {
+            System.out.println("Input Symbol: 0");
         }
         else{
-            System.out.println("1");
+            System.out.println("Input symbol: 1");
         }
     }
 

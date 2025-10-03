@@ -1,3 +1,7 @@
+/*
+ * @author Julio Caesar Tadena
+ */
+
 package simulation;
 
 import java.util.ArrayList;
